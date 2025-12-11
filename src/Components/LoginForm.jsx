@@ -36,13 +36,15 @@ export default function LoginForm() {
     }
 
     // Check email and phone
-    if (storedUser.email === email) {
-      alert("Login successful!");
-      navigate("/OtpVerify");
+   if (storedUser.email === email && storedUser.password === password) {
+  localStorage.setItem("isLoggedIn", "true");
+  alert("Login successful!");
+  navigate("/OtpVerify");
 
-      setEmail("");
-      setPassword("");
-      setErrors({});
+  setEmail("");
+  setPassword("");
+  setErrors({});
+
     } else {
       setLoginError("Invalid email or password.");
     }

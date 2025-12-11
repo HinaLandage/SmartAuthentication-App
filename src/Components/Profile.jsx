@@ -4,12 +4,11 @@ import { FaLinkedin, FaGithub, FaFacebook } from "react-icons/fa";
 import avatarImg from "../assets/Images/avatar.png";
 
 export default function UserProfile() {
-  const handleLogout = () => {
-    localStorage.removeItem("userData");
-    alert("Logged out successfully!");
-
-    window.location.href = "/";
-  };
+   const handleLogout = () => {
+  localStorage.removeItem("isLoggedIn");
+   alert("Logged out successfully!");
+   window.location.href = "/";
+};
 
   return (
     <div

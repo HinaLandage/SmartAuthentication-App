@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -13,6 +15,8 @@ export default function SignUp() {
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const [showCPassword, setShowCPassword] = useState(false);
+  const navigate = useNavigate();
+  
 
   // Handle input changes
   const handleChange = (e) => {
@@ -56,14 +60,16 @@ export default function SignUp() {
     e.preventDefault();
     if (validate()) {
       const userData = {
-        fullName: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-      };
+  fullName: formData.fullName,
+  email: formData.email,
+  phone: formData.phone,
+  password: formData.password
+};
 
-      localStorage.setItem("userData", JSON.stringify(userData));
+localStorage.setItem("userData", JSON.stringify(userData));
 
       alert("Account Created Successfully!");
+        navigate("/OtpVerify");
 
       // Reset form
       setFormData({
@@ -79,7 +85,7 @@ export default function SignUp() {
 
   return (
     <div
-      className="flex items-center justify-center min-h-scree px-4"
+      className="flex items-center justify-center min-h-screen px-4"
       style={{
         background: "linear-gradient(135deg, #90CAF9, #CE93D8, #F8BBD0)",
       }}

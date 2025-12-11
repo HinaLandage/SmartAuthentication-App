@@ -32,8 +32,9 @@ export default function OtpScreen() {
     const enteredOtp = otp.join("");
 
     if (enteredOtp.length === 4) {
+      localStorage.setItem("isLoggedIn", "true");
       alert("OTP Verified!"); 
-      navigate("/dashboard");
+      navigate("/Dashboard");
     } else {
       alert("Please enter all 4 digits");
     }
